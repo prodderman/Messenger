@@ -1,0 +1,25 @@
+html {
+  color: #272727;
+  background: white;
+  font-family: Arial, sans-serif;
+  font-size: 15px; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem; }
+
+a {
+  text-decoration: none;
+  color: #272727; }
+  a:hover {
+    text-decoration: none;
+    color: #171717; }
+  a:focus {
+    text-decoration: none;
+    color: #272727; }
+
+html,
+body,
+#root {
+  height: 100%; }

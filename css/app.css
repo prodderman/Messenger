@@ -1,0 +1,21 @@
+.messenger {
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -ms-flex-align: stretch;
+      align-items: stretch; }
+  .messenger__users-list {
+    min-width: 17.5rem;
+    padding: 0.4rem; }
+  .messenger__splitter {
+    z-index: 1;
+    width: 0.3rem;
+    box-shadow: 2px 0 2px 0 #bebebe; }
+  .messenger__messages {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    min-width: 25.5rem;
+    padding: 0.4rem;
+    background-color: #ebebeb; }
+.application {
+  height: 100%; }
