@@ -9,7 +9,7 @@ import { IAppData, Module, RootSaga, IAppReduxState, IReduxEntry } from 'shared/
 
 function configureApp(data?: IAppData): IAppData {
 
-  const modules: Module[] = [new MessengerModule(), new AuthorizationModule()];
+  const modules: Module[] = [new AuthorizationModule()];
 
   if (data) {
     return { ...data, modules };
