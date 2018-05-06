@@ -1,3 +1,3 @@
 # Messenger
 
-[gh-pages](https://prodderman.github.io/Messenger//authorization/login)
+[gh-pages](https://prodderman.github.io/Messenger/authorization/login)
