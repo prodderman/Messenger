@@ -53,7 +53,7 @@ class Form extends React.PureComponent<IProps, {}> {
             <form action="" method="post">
               <fieldset className={b('fields')()}>
                 <div className={b('field')()}>
-                  <label>
+                  <label className={b('')()}>
                     Email Address<span className={b('require')()}>*</span>
                   </label>
                   <input type="email"required/>

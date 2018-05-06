@@ -32,14 +32,14 @@ export const commonPlugins: webpack.Plugin[] = [
     minChunks: (module, count) => module.context && module.context.includes('src/shared'),
   }),
   new webpack.optimize.CommonsChunkPlugin({
-    name: 'manifest',
+    name: 'meta',
     minChunks: Infinity,
   }),
   new HtmlWebpackPlugin({
     filename: 'index.html',
     template: 'assets/index.html',
     chunksSortMode(a, b) {
-      const order = ['app', 'shared', 'vendor', 'manifest'];
+      const order = ['app', 'shared', 'vendor', 'meta'];
       return order.indexOf(b.names[0]) - order.indexOf(a.names[0]);
     },
   }),
