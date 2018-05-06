@@ -1,0 +1,36 @@
+.form {
+  width: 100%;
+  max-width: 30rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background: rgba(#13232f, 0.9);
+  box-shadow: 0 4px 10px 4px rgba(#13232f, 0.3);
+
+  &__tab-group {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tab {
+    width: 50%;
+    padding: 1rem;
+    cursor: pointer;
+    transition: 0.5s ease;
+    text-align: center;
+    color: #a0a0a0;
+    background: rgba(#a0a0a0, 0.25);
+    font-size: 20px;
+
+    &:hover {
+      color: #fff;
+      background: #1ab188;
+    }
+
+    &_active {
+      color: #fff;
+      background: #1ab188;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+interface Window {
+  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(): any;
+}
+
+interface SinonStub {
+  callsFake: Function;
+}
+
+interface WebpackModule {
+  hot: boolean;
+  accept: Function;
+}
+
+declare module 'redux-async-connect';
+declare module 'react-geosuggest';
+declare module 'normalizr';
+declare module '*.scss';
+declare module '*.png';
+declare module 'shared/*';
+declare module 'decko';
+declare module 'react-hot-loader';
+declare module 'enzyme-adapter-react-16';
+declare module 'postcss-reporter';
+declare module 'postcss-easy-import';
+declare module 'postcss-scss';
+declare module 'stylelint';
+declare module 'doiuse';
