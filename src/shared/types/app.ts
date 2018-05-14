@@ -4,7 +4,10 @@ import { Store, Reducer, ActionCreator, Action } from 'redux';
 
 import { SagaIterator } from 'redux-saga';
 
+import { namespace as PrivateRouteNamespace } from 'services/PrivateRoute';
+
 import Api from 'services/api/Api';
+import Cookie from 'services/cookie/Cookie';
 
 export abstract class Module<C = any> {
   public components?: C; // available componens to pass in other modules
@@ -45,6 +48,7 @@ export interface IAppData {
 
 export interface IDependencies {
   api: Api;
+  cookie: Cookie;
 }
 
 export type IDictionary<T, S extends string = string> = {
@@ -67,7 +71,7 @@ export interface IFeatureEntry<
 }
 
 export interface IAppReduxState {
-  state: string; // state
+  privateRoute: PrivateRouteNamespace.IReduxState;
 }
 
 export type Diff<T extends string, U extends string> =
