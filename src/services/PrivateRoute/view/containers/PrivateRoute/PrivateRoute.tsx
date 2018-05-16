@@ -7,6 +7,7 @@ import { IAppReduxState } from 'shared/types/app';
 import { ICommunication } from 'shared/types/redux';
 import { IReduxState } from '../../../namespace';
 import { actions, selectors } from './../../../redux';
+import Preloader from 'shared/view/elements/preloader';
 
 interface IOwnProps extends RouteProps {
   isLoginPage?: boolean;
@@ -14,47 +15,51 @@ interface IOwnProps extends RouteProps {
 }
 
 interface IStateProps {
-  isLogin: boolean | null;
-  communication: { cookieFetching: ICommunication };
+  hasAccess: boolean | null;
+  communication: { authorization: ICommunication };
 }
 
 interface IActionProps {
-  loadCookie: typeof actions.loadCookie;
+  authorization: typeof actions.authorization;
 }
 
 type IProps = IStateProps & IActionProps & IOwnProps;
 
 function mapState(state: IAppReduxState): IStateProps {
-  const isLogin = selectors.selectLogin(state.privateRoute);
+  const hasAccess = selectors.selectAccess(state.privateRoute);
   const communication = selectors.selectCommunication(state.privateRoute);
   return {
-    isLogin,
+    hasAccess,
     communication,
   };
 }
 
 function mapDispatch(dispatch: Dispatch<IAppReduxState>): IActionProps {
   return bindActionCreators({
-    loadCookie: actions.loadCookie,
+    authorization: actions.authorization,
   }, dispatch);
 }
 
 class PrivateRoute extends React.Component<IProps, {}> {
+  constructor(props: IProps) {
+    super(props);
+  }
+
   public componentWillMount() {
-    if (this.props.isLogin === null) {
-      this.props.loadCookie();
+    if (this.props.hasAccess === null) {
+      this.props.authorization();
     }
   }
 
   public render() {
     const props = this.props;
-    const isRequesting = this.props.communication.cookieFetching.isRequesting;
-    const isLogin = this.props.isLogin;
+    const isRequesting = this.props.communication.authorization.isRequesting;
+    const hasAccess = this.props.hasAccess;
     const isLoginPage = this.props.isLoginPage;
     if (isRequesting) {
-      return <h1>preloader</h1>;
+      return <Preloader />;
     }
-    if (isLogin) {
+    if (hasAccess) {
       if (isLoginPage) {
         return <Redirect to={`${ROUTES_PREFIX}/messenger`} />;
       } else {
@@ -64,7 +69,7 @@ class PrivateRoute extends React.Component<IProps, {}> {
       if (isLoginPage) {
         return <Route {...props} />;
       } else {
-        return <Redirect to={`${ROUTES_PREFIX}/authorization/login`} />;
+        return <Redirect to={`${ROUTES_PREFIX}/authentication/login`} />;
       }
     }
   }

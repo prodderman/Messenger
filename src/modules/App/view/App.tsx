@@ -1,5 +1,6 @@
 import * as React from 'react';
 import block from 'bem-cn';
+import 'shared/view/styles/constants.scss';
 import 'shared/view/styles/base.scss';
 import './styles.scss';
 

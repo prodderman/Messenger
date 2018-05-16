@@ -7,20 +7,25 @@ import { IDependencies } from 'shared/types/app';
 import { IAccessInfo } from 'shared/types/models';
 import * as NS from '../../namespace';
 
-const loadCookieType: NS.ILoadCookie['type'] = 'PRIVATE_ROUTE:LOAD_COOKIE';
+const authorizationType: NS.IAuthorization['type'] = 'PRIVATE_ROUTE:AUTHORIZATION';
 
 export default function getSaga(deps: IDependencies) {
   return function* saga() {
-    yield takeLatest(loadCookieType, executeCookieLoading, deps);
+    yield takeLatest(authorizationType, executeAuthorization, deps);
   };
 }
 
-export function* executeCookieLoading({ cookie }: IDependencies) {
+export function* executeAuthorization({ storage, api }: IDependencies) {
+  const response: IAccessInfo | null = yield call(storage.loadAccessInfo);
+  if (!response) {
+    yield put(actions.authorizationSuccess(false));
+    return;
+  }
+
   try {
-    const response: IAccessInfo = yield call(cookie.loadCookie);
-    yield put(actions.loadCookieSuccess(response));
+    // yield put(actions.loadCookieSuccess(response));
   } catch (error) {
     const message = getErrorMsg(error);
-    yield put(actions.loadCookieFail(message));
+    yield put(actions.authorizationFail(message));
   }
 }

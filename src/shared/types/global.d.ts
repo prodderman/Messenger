@@ -1,3 +1,5 @@
+// Global definitions (you shouldn't import it, it is global scope)
+/* tslint:disable */
 interface Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(): any;
 }
@@ -12,7 +14,6 @@ interface WebpackModule {
 }
 
 declare module 'redux-async-connect';
-declare module 'react-geosuggest';
 declare module 'normalizr';
 declare module '*.scss';
 declare module '*.png';

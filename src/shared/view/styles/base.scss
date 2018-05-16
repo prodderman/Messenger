@@ -1,9 +1,10 @@
+@import 'constants.scss';
 
 html {
-  color: #272727;
-  background: white;
+  color: $baseTextColor;
+  background: $baseBackgroundColor;
   font-family: Arial, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 body {
@@ -14,16 +15,16 @@ body {
 
 a {
   text-decoration: none;
-  color: #272727;
+  color: $baseTextColor;
 
   &:hover {
     text-decoration: none;
-    color: #171717;
+    color: darken($baseTextColor, 20%);
   }
 
   &:focus {
     text-decoration: none;
-    color: #272727;
+    color: $baseTextColor;
   }
 }
 

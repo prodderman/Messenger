@@ -2,26 +2,17 @@ import { IPlainAction, IPlainFailAction, ICommunication, IAction } from 'shared/
 import { IAccessInfo } from 'shared/types/models';
 
 export interface IReduxState {
-  edit: {
-    isLogin: boolean | null;
-  };
   data: {
-    accessInfo: IAccessInfo;
+    hasAccess: boolean | null;
   };
   communication: {
-    cookieFetching: ICommunication;
+    authorization: ICommunication;
   };
 }
 
-export type ILoadCookie = IPlainAction<'PRIVATE_ROUTE:LOAD_COOKIE'>;
-export type ILoadCookieSuccess = IAction<'PRIVATE_ROUTE:LOAD_COOKIE_SUCCESS', IAccessInfo>;
-export type ILoadCookieFail = IPlainFailAction<'PRIVATE_ROUTE:LOAD_COOKIE_FAIL'>;
-
-export type IPostToken = IPlainAction<'PRIVATE_ROUTE:POST_TOKEN'>;
-export type IPostTokenSuccess = IAction<'PRIVATE_ROUTE:POST_TOKEN_SUCCESS', boolean>;
-export type IPostTokenFail = IPlainFailAction<'PRIVATE_ROUTE:POST_TOKEN_FAIL'>;
-
-export type ISetLogin = IAction<'PRIVATE_ROUTE:SET_LOGIN', boolean>;
+export type IAuthorization = IPlainAction<'PRIVATE_ROUTE:AUTHORIZATION'>;
+export type IAuthorizationSuccess = IAction<'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS', boolean>;
+export type IAuthorizationFail = IPlainFailAction<'PRIVATE_ROUTE:AUTHORIZATION_FAIL'>;
 
 export type Action =
-  | ILoadCookie | ILoadCookieSuccess | ILoadCookieFail | IPostToken | IPostTokenSuccess | IPostTokenFail | ISetLogin;
+  | IAuthorization  | IAuthorizationSuccess  | IAuthorizationFail;

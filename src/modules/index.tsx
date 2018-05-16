@@ -1,4 +1,5 @@
 import MessengerModule from './Messenger/Messenger';
-import AuthorizationModule from './Authorization/Authorization';
+import AuthenticationModule from './Authentication/Authentication';
+import Page404Module from './Page404/Page404';
 
-export { MessengerModule, AuthorizationModule };
+export { MessengerModule, AuthenticationModule, Page404Module };

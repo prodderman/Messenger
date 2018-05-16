@@ -2,7 +2,7 @@ import configureDeps from './configureDeps';
 import { TYPES, container } from './configureIoc';
 import configureStore, { createReducer } from './configureStore';
 
-import { MessengerModule, AuthorizationModule } from 'modules';
+import { MessengerModule, AuthenticationModule } from 'modules';
 import privateRoute from 'services/PrivateRoute';
 
 import { ReducersMap } from 'shared/types/redux';
@@ -10,7 +10,10 @@ import { IAppData, Module, RootSaga, IAppReduxState, IReduxEntry } from 'shared/
 
 function configureApp(data?: IAppData): IAppData {
 
-  const modules: Module[] = [new AuthorizationModule(), new MessengerModule()];
+  const modules: Module[] = [
+    new AuthenticationModule(),
+    new MessengerModule(),
+  ];
 
   if (data) {
     return { ...data, modules };

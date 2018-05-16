@@ -5,17 +5,16 @@ import * as NS from '../../namespace';
 
 import initial from '../initial';
 
-type accessInfoState = NS.IReduxState['data']['accessInfo'];
+type hasAccessState = NS.IReduxState['data']['hasAccess'];
 
-function cookieReducer(state: accessInfoState = initial.data.accessInfo, action: NS.Action): accessInfoState {
+function accessReducer(state: hasAccessState = initial.data.hasAccess, action: NS.Action): hasAccessState {
   switch (action.type) {
-    case 'PRIVATE_ROUTE:LOAD_COOKIE_SUCCESS': {
+    case 'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS':
       return action.payload;
-    }
     default: return state;
   }
 }
 
 export default combineReducers({
-  accessInfo: cookieReducer,
+  hasAccess: accessReducer,
 } as ReducersMap<NS.IReduxState['data']>);

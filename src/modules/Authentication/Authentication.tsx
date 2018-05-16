@@ -5,11 +5,11 @@ import { ROUTES_PREFIX } from 'core/constants';
 import { PrivateRoute } from 'services/PrivateRoute';
 import Layout from './view/Layout/Layout';
 
-class AuthorizationModule extends Module {
+class AuthenticationModule extends Module {
   public getRoutes() {
     // tslint:disable-next-line:max-line-length
-    return <PrivateRoute exact key="authorization" path={`${ROUTES_PREFIX}/authorization/:tab(login|register)`} component={Layout} isLoginPage />;
+    return <PrivateRoute exact key="authentication" path={`${ROUTES_PREFIX}/authentication/:tab`} component={Layout} isLoginPage />;
   }
 }
 
-export default AuthorizationModule;
+export default AuthenticationModule;

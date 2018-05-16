@@ -1,18 +1,11 @@
 import * as NS from '../namespace';
 
 const initialState: NS.IReduxState = {
-  edit: {
-    isLogin: null,
-  },
   data: {
-    accessInfo: {
-      accessToken: null,
-      refreshToken: null,
-      timestamp: null,
-    },
+    hasAccess: null,
   },
   communication: {
-    cookieFetching: {
+    authorization: {
       isRequesting: false,
       error: '',
     },

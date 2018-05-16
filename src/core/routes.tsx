@@ -3,6 +3,7 @@ import { Module } from 'shared/types/app';
 import { ROUTES_PREFIX } from 'core/constants';
 
 import { Route, RouteComponentProps, Redirect, Switch } from 'react-router-dom';
+import { Page404Module } from 'modules';
 import { App } from 'modules/App';
 
 function getRoutes(modules: Module[]): React.ReactElement<RouteComponentProps<any>> {
@@ -11,7 +12,7 @@ function getRoutes(modules: Module[]): React.ReactElement<RouteComponentProps<an
       <App>
         <Switch>
           {modules.map(module => module.getRoutes ? module.getRoutes() : null)}
-          <Redirect exact from={ROUTES_PREFIX} to={`${ROUTES_PREFIX}/authorization/login`} />
+          <Redirect exact from={ROUTES_PREFIX} to={`${ROUTES_PREFIX}/authentication/login`} />
         </Switch>
       </App>
     </Route>

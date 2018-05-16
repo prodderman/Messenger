@@ -5,9 +5,10 @@ import { Store, Reducer, ActionCreator, Action } from 'redux';
 import { SagaIterator } from 'redux-saga';
 
 import { namespace as PrivateRouteNamespace } from 'services/PrivateRoute';
+import { namespace as SignInUpFormNamespace } from 'features/signInUpForm';
 
 import Api from 'services/api/Api';
-import Cookie from 'services/cookie/Cookie';
+import Storage from 'services/storage/Storage';
 
 export abstract class Module<C = any> {
   public components?: C; // available componens to pass in other modules
@@ -48,7 +49,7 @@ export interface IAppData {
 
 export interface IDependencies {
   api: Api;
-  cookie: Cookie;
+  storage: Storage;
 }
 
 export type IDictionary<T, S extends string = string> = {
@@ -72,6 +73,7 @@ export interface IFeatureEntry<
 
 export interface IAppReduxState {
   privateRoute: PrivateRouteNamespace.IReduxState;
+  signInUpForm: SignInUpFormNamespace.IReduxState;
 }
 
 export type Diff<T extends string, U extends string> =

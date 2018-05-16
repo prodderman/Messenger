@@ -1,0 +1,23 @@
+.messenger {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+
+  &__users-list {
+    min-width: 17.5rem;
+    padding: 0.4rem;
+  }
+
+  &__splitter {
+    z-index: 1;
+    width: 0.3rem;
+    box-shadow: 2px 0 2px 0 rgb(190, 190, 190);
+  }
+
+  &__messages {
+    flex-grow: 1;
+    min-width: 25.5rem;
+    padding: 0.4rem;
+    background-color: #ebebeb;
+  }
+}
