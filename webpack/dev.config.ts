@@ -8,7 +8,6 @@ const rules: webpack.Rule[] = commonRules.concat([
   {
     test: /\.(ts|tsx)$/,
     use: ([] as string[])
-      .concat(withHot ? 'react-hot-loader/webpack' : [])
       .concat([
         'awesome-typescript-loader',
         'tslint-loader',

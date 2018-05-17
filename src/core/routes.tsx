@@ -13,6 +13,7 @@ function getRoutes(modules: Module[]): React.ReactElement<RouteComponentProps<an
         <Switch>
           {modules.map(module => module.getRoutes ? module.getRoutes() : null)}
           <Redirect exact from={ROUTES_PREFIX} to={`${ROUTES_PREFIX}/authentication/login`} />
+          {new Page404Module().getRoutes()}
         </Switch>
       </App>
     </Route>

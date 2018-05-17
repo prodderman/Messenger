@@ -1,6 +1,7 @@
 @import '../../../../../shared/view/styles/constants.scss';
 
 .signinup-form {
+  position: relative;
   display: block;
   overflow: hidden;
   width: 100%;
@@ -20,6 +21,7 @@
 
   &__tab {
     flex-grow: 1;
+    width: 15%;
     height: 3rem;
     text-align: center;
     text-transform: uppercase;
@@ -27,7 +29,7 @@
     line-height: 3rem;
   }
 
-  &__title {
+  &__tab-title {
     display: block;
     overflow: hidden;
     width: 100%;
@@ -39,5 +41,34 @@
 
   &__indicator {
     //
+  }
+
+  &__login {
+    padding: 1rem 1.5rem;
+    background-color: white;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__row {
+    text-align: center;
+  }
+
+  &__footer {
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  &__loading {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
   }
 }

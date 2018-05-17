@@ -13,7 +13,7 @@ interface IOwnProps {
   signInUpFormEntry: signInUpForm.Entry;
 }
 
-type IProps = IOwnProps & RouteComponentProps<{}>;
+type IProps = IOwnProps & RouteComponentProps<signInUpForm.namespace.ITab>;
 
 const b = block('authentication');
 

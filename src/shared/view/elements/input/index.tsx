@@ -15,6 +15,7 @@ interface IProps {
   step?: number;
   pattern?: string;
   hidden?: boolean;
+  required?: boolean;
 }
 
 interface IState {
@@ -45,6 +46,7 @@ class Input extends React.Component<IProps, IState> {
             maxLength={props.maxLength}
             step={props.step}
             pattern={props.pattern}
+            required={props.required}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
             onChange={this.isFilled}
