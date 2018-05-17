@@ -15,6 +15,8 @@
     stroke: #2196f3;
     stroke-dasharray: 187;
     stroke-dashoffset: 186; }
+  .preloader_alt-color .preloader__circle {
+    stroke: #fff; }
 
 @keyframes rotate {
   0% {

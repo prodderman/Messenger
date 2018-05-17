@@ -17,6 +17,17 @@
     min-width: 25.5rem;
     padding: 0.4rem;
     background-color: #ebebeb; }
+.login-form {
+  padding: 1rem 1.5rem;
+  background-color: white; }
+  .login-form__title {
+    margin: 0;
+    margin-bottom: 1rem; }
+  .login-form__row {
+    text-align: center; }
+  .login-form__footer {
+    margin: 1rem 0;
+    text-align: center; }
 .input-group {
   clear: both;
   overflow: hidden;
@@ -125,17 +136,6 @@
     cursor: pointer;
     color: white;
     background-color: #2196f3; }
-  .signinup-form__login {
-    padding: 1rem 1.5rem;
-    background-color: white; }
-  .signinup-form__title {
-    margin: 0;
-    margin-bottom: 1rem; }
-  .signinup-form__row {
-    text-align: center; }
-  .signinup-form__footer {
-    margin: 1rem 0;
-    text-align: center; }
   .signinup-form__loading {
     position: absolute;
     z-index: 1;
