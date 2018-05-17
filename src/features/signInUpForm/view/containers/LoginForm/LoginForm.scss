@@ -1,0 +1,18 @@
+.login-form {
+  padding: 1rem 1.5rem;
+  background-color: white;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__row {
+    text-align: center;
+  }
+
+  &__footer {
+    margin: 1rem 0;
+    text-align: center;
+  }
+}

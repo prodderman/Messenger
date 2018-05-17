@@ -3,16 +3,17 @@ import block from 'bem-cn';
 import './index.scss';
 
 interface IProps {
-  size?: number;
+  size?: string;
+  altColor?: boolean;
 }
 
 const b = block('preloader');
-const Preloader = ({size = 65}: IProps) => (
-  <div className={b()}>
+const Preloader = ({size = '65px', altColor = false}: IProps) => (
+  <div className={b({['alt-color']: altColor})()}>
     <svg
       className={b('view')()}
-      width={`${size}px`}
-      height={`${size}px`}
+      width={`${size}`}
+      height={`${size}`}
       viewBox="0 0 66 66"
       xmlns="http://www.w3.org/2000/svg"
     >

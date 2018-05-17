@@ -16,6 +16,8 @@ interface IProps {
   pattern?: string;
   hidden?: boolean;
   required?: boolean;
+  disabled?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface IState {
@@ -45,6 +47,7 @@ class Input extends React.Component<IProps, IState> {
             minLength={props.minLength}
             maxLength={props.maxLength}
             step={props.step}
+            disabled={props.disabled}
             pattern={props.pattern}
             required={props.required}
             onFocus={this.onFocus}
@@ -74,6 +77,9 @@ class Input extends React.Component<IProps, IState> {
     this.setState({
       filled: event.target.value ? true : false,
     });
+    if (this.props.onChange) {
+      this.props.onChange(event);
+    }
   }
 }
 

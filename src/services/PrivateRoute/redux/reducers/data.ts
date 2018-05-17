@@ -10,6 +10,8 @@ type hasAccessState = NS.IReduxState['data']['hasAccess'];
 function accessReducer(state: hasAccessState = initial.data.hasAccess, action: NS.Action): hasAccessState {
   switch (action.type) {
     case 'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS':
+    case 'PRIVATE_ROUTE:AUTHORIZATION_FAIL':
+    case 'PRIVATE_ROUTE:ACCESS_CHANGE':
       return action.payload;
     default: return state;
   }

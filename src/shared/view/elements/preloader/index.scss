@@ -18,6 +18,10 @@
     stroke-dasharray: 187;
     stroke-dashoffset: 186;
   }
+
+  &_alt-color &__circle {
+    stroke: #fff;
+  }
 }
 
 @keyframes rotate {

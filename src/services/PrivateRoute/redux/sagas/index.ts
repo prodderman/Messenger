@@ -18,14 +18,20 @@ export default function getSaga(deps: IDependencies) {
 export function* executeAuthorization({ storage, api }: IDependencies) {
   const response: IAccessInfo | null = yield call(storage.loadAccessInfo);
   if (!response) {
-    yield put(actions.authorizationSuccess(false));
+    yield put(actions.authorizationFail('access info not found', false));
     return;
   }
 
   try {
-    // yield put(actions.loadCookieSuccess(response));
+    const access = yield call(api.authorization, response);
+    if (access) {
+      yield put(actions.authorizationSuccess(access));
+      return;
+    } else {
+      yield put(actions.authorizationFail('', access));
+    }
   } catch (error) {
     const message = getErrorMsg(error);
-    yield put(actions.authorizationFail(message));
+    yield put(actions.authorizationFail(message, false));
   }
 }

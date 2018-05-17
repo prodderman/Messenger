@@ -74,7 +74,7 @@ function makeCommunicationActionCreators(executeType: string, completeType: stri
       return { type: completeType, payload };
     },
     failed: (error: any, payload: any) => {
-      return { type: failType, error, payload };
+      return { type: failType, payload, error };
     },
   };
 }

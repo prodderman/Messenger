@@ -4,24 +4,23 @@ import block from 'bem-cn';
 import './index.scss';
 
 interface IProps {
-  title?: string;
   type?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  onSubmit?: (event: React.FormEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 class Button extends React.Component<IProps, {}> {
   public render() {
     const b = block('button');
-    const { title, type = 'button', disabled, onSubmit } = this.props;
+    const { type = 'button', disabled, onClick, children } = this.props;
     return (
       <button
         className={b()}
         type={type}
         disabled={disabled}
-        onSubmit={onSubmit}
+        onClick={onClick}
       >
-        {title}
+        {children}
       </button>
     );
   }
