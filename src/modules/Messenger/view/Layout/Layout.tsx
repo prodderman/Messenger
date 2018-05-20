@@ -78,11 +78,6 @@ class MessengerLayout extends React.PureComponent<IProps, IState> {
       }
     }
   }
-
-  // @bind
-  // private resizeContainer(mouseX: number) {
-  //   this.setState()
-  // }
 }
 
 export default MessengerLayout;

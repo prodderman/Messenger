@@ -10,11 +10,11 @@ export interface IReduxState {
   };
 }
 
-export type IAuthorization = IPlainAction<'PRIVATE_ROUTE:AUTHORIZATION'>;
-export type IAuthorizationSuccess = IAction<'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS', boolean>;
-export type IAuthorizationFail = IFailAction<'PRIVATE_ROUTE:AUTHORIZATION_FAIL', boolean>;
+export type IAuthorization = IPlainAction<'AUTH_WRAPPER:AUTHORIZATION'>;
+export type IAuthorizationSuccess = IAction<'AUTH_WRAPPER:AUTHORIZATION_SUCCESS', boolean>;
+export type IAuthorizationFail = IFailAction<'AUTH_WRAPPER:AUTHORIZATION_FAIL', boolean>;
 
-export type IAccessChange = IAction<'PRIVATE_ROUTE:ACCESS_CHANGE', boolean | null>;
+export type IAccessChange = IAction<'AUTH_WRAPPER:ACCESS_CHANGE', boolean | null>;
 
 export type Action =
   | IAuthorization  | IAuthorizationSuccess  | IAuthorizationFail | IAccessChange;

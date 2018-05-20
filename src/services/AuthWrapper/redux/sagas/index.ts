@@ -7,7 +7,7 @@ import { IDependencies } from 'shared/types/app';
 import { IAccessInfo } from 'shared/types/models';
 import * as NS from '../../namespace';
 
-const authorizationType: NS.IAuthorization['type'] = 'PRIVATE_ROUTE:AUTHORIZATION';
+const authorizationType: NS.IAuthorization['type'] = 'AUTH_WRAPPER:AUTHORIZATION';
 
 export default function getSaga(deps: IDependencies) {
   return function* saga() {

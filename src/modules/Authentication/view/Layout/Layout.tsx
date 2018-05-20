@@ -8,7 +8,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { IAppReduxState } from 'shared/types/app';
 
 import * as signInUpForm from 'features/signInUpForm';
-import {actions as privateRouteActions} from 'services/PrivateRoute';
+import {actions as privateRouteActions} from 'services/AuthWrapper';
 
 import './Layout.scss';
 import { connect } from 'react-redux';

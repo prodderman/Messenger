@@ -9,6 +9,7 @@ class Storage {
 
   @bind
   public async loadAccessInfo(): Promise<IAccessInfo | null> {
+    await delay(1000);
     return JSON.parse(localStorage.getItem('user') as string) as IAccessInfo | null;
   }
 

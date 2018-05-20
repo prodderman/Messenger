@@ -8,9 +8,9 @@ import initialState from '../initial';
 
 export default combineReducers({
   authorization: makeCommunicationReducer<NS.IAuthorization, NS.IAuthorizationSuccess, NS.IAuthorizationFail>(
-    'PRIVATE_ROUTE:AUTHORIZATION',
-    'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS',
-    'PRIVATE_ROUTE:AUTHORIZATION_FAIL',
+    'AUTH_WRAPPER:AUTHORIZATION',
+    'AUTH_WRAPPER:AUTHORIZATION_SUCCESS',
+    'AUTH_WRAPPER:AUTHORIZATION_FAIL',
     initialState.communication.authorization,
   ),
 } as ReducersMap<NS.IReduxState['communication']>);

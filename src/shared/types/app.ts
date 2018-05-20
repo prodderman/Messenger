@@ -4,7 +4,7 @@ import { Store, Reducer, ActionCreator, Action } from 'redux';
 
 import { SagaIterator } from 'redux-saga';
 
-import { namespace as PrivateRouteNamespace } from 'services/PrivateRoute';
+import { namespace as AuthWrapperNamespace } from 'services/AuthWrapper';
 import { namespace as SignInUpFormNamespace } from 'features/signInUpForm';
 
 import Api from 'services/api/Api';
@@ -72,7 +72,7 @@ export interface IFeatureEntry<
 }
 
 export interface IAppReduxState {
-  privateRoute: PrivateRouteNamespace.IReduxState;
+  authWrapper: AuthWrapperNamespace.IReduxState;
   signInUpForm: SignInUpFormNamespace.IReduxState;
 }
 

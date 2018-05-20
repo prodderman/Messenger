@@ -7,8 +7,15 @@ import Layout from './view/Layout/Layout';
 
 class AuthenticationModule extends Module {
   public getRoutes() {
-    // tslint:disable-next-line:max-line-length
-    return <PrivateRoute exact key="authentication" path={`${ROUTES_PREFIX}/authentication/:tab`} component={Layout} isLoginPage />;
+    return (
+      <PrivateRoute
+        key="authentication"
+        path={`${ROUTES_PREFIX}/authentication/:tab`}
+        redirectPath={`${ROUTES_PREFIX}/messenger`}
+        component={Layout}
+        isLoginPage
+      />
+    );
   }
 }
 

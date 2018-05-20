@@ -3,7 +3,7 @@ import { TYPES, container } from './configureIoc';
 import configureStore, { createReducer } from './configureStore';
 
 import { MessengerModule, AuthenticationModule } from 'modules';
-import privateRoute from 'services/PrivateRoute';
+import authWrapper from 'services/AuthWrapper';
 
 import { ReducersMap } from 'shared/types/redux';
 import { IAppData, Module, RootSaga, IAppReduxState, IReduxEntry } from 'shared/types/app';
@@ -19,7 +19,9 @@ function configureApp(data?: IAppData): IAppData {
     return { ...data, modules };
   }
 
-  const sharedReduxEntries: IReduxEntry[] = [privateRoute];
+  const sharedReduxEntries: IReduxEntry[] = [
+    authWrapper,
+  ];
 
   const connectedSagas: RootSaga[] = [];
   const connectedReducers: ReducersMap<Partial<IAppReduxState>> = {};

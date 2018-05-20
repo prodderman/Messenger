@@ -3,5 +3,5 @@ import { makeCommunicationActionCreators } from 'shared/helpers/redux';
 
 export const { execute: authorization, completed: authorizationSuccess, failed: authorizationFail } =
   makeCommunicationActionCreators<NS.IAuthorization, NS.IAuthorizationSuccess, NS.IAuthorizationFail>(
-    'PRIVATE_ROUTE:AUTHORIZATION', 'PRIVATE_ROUTE:AUTHORIZATION_SUCCESS', 'PRIVATE_ROUTE:AUTHORIZATION_FAIL',
+    'AUTH_WRAPPER:AUTHORIZATION', 'AUTH_WRAPPER:AUTHORIZATION_SUCCESS', 'AUTH_WRAPPER:AUTHORIZATION_FAIL',
   );

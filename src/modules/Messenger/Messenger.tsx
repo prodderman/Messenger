@@ -6,7 +6,15 @@ import Layout from './view/Layout/Layout';
 
 class MessengerModule extends Module {
   public getRoutes() {
-    return <PrivateRoute exact key="messenger" path={`${ROUTES_PREFIX}/messenger`} component={Layout} />;
+    return (
+      <PrivateRoute
+        exact
+        key="messenger"
+        path={`${ROUTES_PREFIX}/messenger`}
+        redirectPath={`${ROUTES_PREFIX}/authentication/:tab`}
+        component={Layout}
+      />
+    );
   }
 }
 
