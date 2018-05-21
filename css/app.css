@@ -79,6 +79,8 @@
   z-index: 1;
   display: inline-block;
   overflow: hidden;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
   height: 2.5rem;
   padding: 0 2rem;
   cursor: pointer;
