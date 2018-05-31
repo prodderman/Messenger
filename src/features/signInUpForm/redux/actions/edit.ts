@@ -1,5 +1,4 @@
 import * as NS from '../../namespace';
-import {ILogin} from 'shared/types/models';
 
 export function changeLoginEmail(payload: string): NS.ILoginEmailChange {
   return {

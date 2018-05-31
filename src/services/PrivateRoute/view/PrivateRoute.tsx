@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { RouteComponentProps, RouteProps, Route, Redirect } from 'react-router-dom';
-import { bind } from 'decko';
 import { IAppReduxState } from 'shared/types/app';
 import { connect } from 'react-redux';
 
@@ -29,7 +28,7 @@ class PrivateRoute extends React.Component<IProps> {
     const props = this.props as RouteProps;
     const hasAccess = !!this.props.hasAccess;
     const isLoginPage = !!this.props.isLoginPage;
-    const renderVar = hasAccess !== isLoginPage;
+    const renderVar = hasAccess !== isLoginPage; // XOR
     return (
       renderVar ? (
         <Route {...props}/>

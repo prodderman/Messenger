@@ -9,6 +9,10 @@ const initialState: NS.IReduxState = {
       isRequesting: false,
       error: '',
     },
+    logOut: {
+      isRequesting: false,
+      error: '',
+    },
   },
 };
 

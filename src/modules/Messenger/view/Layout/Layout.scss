@@ -1,11 +1,11 @@
 .messenger {
   display: flex;
-  height: 100%;
   align-items: stretch;
+  height: 100%;
 
   &__users-list {
-    min-width: 17.5rem;
     padding: 0.4rem;
+    min-width: 17.5rem;
   }
 
   &__splitter {
@@ -16,8 +16,8 @@
 
   &__messages {
     flex-grow: 1;
-    min-width: 25.5rem;
     padding: 0.4rem;
+    min-width: 25.5rem;
     background-color: #ebebeb;
   }
 }

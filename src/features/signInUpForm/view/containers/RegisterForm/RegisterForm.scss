@@ -1,0 +1,15 @@
+@import 'constants.scss';
+
+.register-form {
+  &__fieldset {
+    padding: 0;
+    outline: 0;
+    border: none;
+  }
+
+  &__submit-button {
+    display: flex;
+    justify-content: stretch;
+    text-align: center;
+  }
+}

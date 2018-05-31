@@ -1,8 +1,4 @@
-import { combineReducers } from 'redux';
-
-import { ReducersMap } from 'shared/types/redux';
 import * as NS from '../../namespace';
-
 import initial from '../initial';
 
 // tslint:disable-next-line:max-line-length
@@ -22,6 +18,9 @@ export default function dataReducer(state: NS.IReduxState['data'] = initial.data
         hasAccess: false,
         message: action.error,
       };
+    }
+    case 'SIGN_IN_UP_FORM:RESET_LOGIN': {
+      return initial.data;
     }
     default: return state;
   }

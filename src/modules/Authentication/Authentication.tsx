@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Module } from 'shared/types/app';
 import { ROUTES_PREFIX } from 'core/constants';
 
@@ -9,9 +9,10 @@ class AuthenticationModule extends Module {
   public getRoutes() {
     return (
       <PrivateRoute
+        exact
         key="authentication"
-        path={`${ROUTES_PREFIX}/authentication/:tab`}
-        redirectPath={`${ROUTES_PREFIX}/messenger`}
+        path={`${ROUTES_PREFIX}/authentication`}
+        redirectPath={`${ROUTES_PREFIX}/im`}
         component={Layout}
         isLoginPage
       />

@@ -9,14 +9,20 @@ class Storage {
 
   @bind
   public async loadAccessInfo(): Promise<IAccessInfo | null> {
-    await delay(1000);
     return JSON.parse(localStorage.getItem('user') as string) as IAccessInfo | null;
   }
 
   @bind
-  public async writeAccessInfo(accessInfo: IAccessInfo): Promise<void> {
+  public async writeAccessInfo(accessInfo: IAccessInfo): Promise<boolean> {
     localStorage.removeItem('user');
     localStorage.setItem('user', JSON.stringify(accessInfo));
+    return true;
+  }
+
+  @bind
+  public async clearAccessInfo(): Promise<boolean> {
+    localStorage.removeItem('user');
+    return true;
   }
 
   @bind

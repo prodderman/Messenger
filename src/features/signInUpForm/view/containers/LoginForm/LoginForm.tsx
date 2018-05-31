@@ -4,7 +4,6 @@ import { bind } from 'decko';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { IAppReduxState } from 'shared/types/app';
-import { IReduxState, ITab } from '../../../namespace';
 import { actions, selectors } from './../../../redux';
 import { ICommunication } from 'shared/types/redux';
 import './LoginForm.scss';
@@ -46,36 +45,39 @@ class LoginForm extends React.Component<IProps> {
   public render() {
     const b = block('login-form');
     const authStatus = this.props.communication.authentication;
+    const savedData = this.props.loginFormData;
     return (
       <div className={b()}>
         <form action="" method="post" onSubmit={this.onSubmit}>
-          <h2 className={b('title')()}>Log In</h2>
-          <div className={b('row')()}>
+          <fieldset className={b('row')()}>
             <Input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="E-mail"
               onChange={this.changeLoginEmail}
               disabled={authStatus.isRequesting}
+              defaultValue={savedData.email}
               required
             />
-          </div>
-          <div className={b('row')()}>
             <Input
               type="password"
               name="password"
               placeholder="Password"
               onChange={this.changeLoginPassword}
               disabled={authStatus.isRequesting}
+              defaultValue={savedData.password}
               required
             />
-          </div>
-          <div className={b('footer')()}>
+          </fieldset>
+          <div className={b('submit-button')()}>
             <Button type="submit">
-              {authStatus.isRequesting ? <Preloader size="20" altColor/> : 'Submit'}
+              {authStatus.isRequesting ? <Preloader size="20" altColor/> : 'Login'}
             </Button>
           </div>
         </form>
+        <div className={b('forgot-password')()}>
+          <a className={b('forgot-password-link')()} href="/mock">Forgot password?</a>
+        </div>
       </div>
     );
   }

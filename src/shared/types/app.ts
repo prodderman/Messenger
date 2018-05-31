@@ -87,4 +87,10 @@ export type Lang = 'en' | 'he';
 
 export type Uid = number;
 
+export interface IAssets {
+  javascript: Record<string, string>;
+  styles: Record<string, string>;
+  assets: Record<string, string>;
+}
+
 export * from '../helpers/redux/namespace';

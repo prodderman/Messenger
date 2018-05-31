@@ -1,7 +1,6 @@
-.login-form {
-  padding: 1rem 1.5rem;
-  background-color: white;
+@import 'constants.scss';
 
+.login-form {
   &__title {
     margin: 0;
     margin-bottom: 1rem;
@@ -11,8 +10,20 @@
     text-align: center;
   }
 
-  &__footer {
+  &__submit-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
     margin: 1rem 0;
     text-align: center;
+  }
+
+  &__forgot-password {
+    width: 100%;
+    text-align: center;
+
+    &-link {
+      color: $activeColor;
+    }
   }
 }

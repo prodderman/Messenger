@@ -1,8 +1,4 @@
-import { combineReducers } from 'redux';
-
-import { ReducersMap } from 'shared/types/redux';
 import * as NS from '../../namespace';
-
 import initial from '../initial';
 
 // tslint:disable-next-line:max-line-length

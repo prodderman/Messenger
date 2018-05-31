@@ -18,3 +18,7 @@ export function getCommunicationsState(state: IAppReduxState): {authentication: 
 export function getDataState(state: IAppReduxState): NS.IReduxState['data'] {
   return getSignInUpFormState(state).data;
 }
+
+export function getActiveFormState(state: IAppReduxState): NS.IFormActive {
+  return getSignInUpFormState(state).ui.activeFrom;
+}

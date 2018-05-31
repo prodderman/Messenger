@@ -13,4 +13,10 @@ export default combineReducers({
     'AUTH_WRAPPER:AUTHORIZATION_FAIL',
     initialState.communication.authorization,
   ),
+  logOut: makeCommunicationReducer<NS.ILogOut, NS.ILogOutSuccess, NS.ILogOutFail>(
+    'AUTH_WRAPPER:LOGOUT',
+    'AUTH_WRAPPER:LOGOUT_SUCCESS',
+    'AUTH_WRAPPER:LOGOUT_FAIL',
+    initialState.communication.logOut,
+  ),
 } as ReducersMap<NS.IReduxState['communication']>);

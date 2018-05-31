@@ -11,6 +11,7 @@ function accessReducer(state: hasAccessState = initial.data.hasAccess, action: N
   switch (action.type) {
     case 'AUTH_WRAPPER:AUTHORIZATION_SUCCESS':
     case 'AUTH_WRAPPER:AUTHORIZATION_FAIL':
+    case 'AUTH_WRAPPER:LOGOUT_SUCCESS':
     case 'AUTH_WRAPPER:ACCESS_CHANGE':
       return action.payload;
     default: return state;

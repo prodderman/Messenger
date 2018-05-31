@@ -1,50 +1,41 @@
 import * as React from 'react';
 import block from 'bem-cn';
 import { bind } from 'decko';
+import { IAppReduxState } from 'shared/types/app';
+import {actions as authWrapperAction} from 'services/AuthWrapper';
+import { Dispatch, bindActionCreators } from 'redux';
 
 import './Layout.scss';
+import { connect } from 'react-redux';
 
-interface IProps {
-  startWidth?: string;
+function mapState(state: IAppReduxState): {} {
+  return {};
 }
 
-interface IState {
-  width: string;
-  isPressed: boolean;
+interface IActionProps {
+  logOutCommunications: typeof authWrapperAction.logOut;
 }
 
-class MessengerLayout extends React.PureComponent<IProps, IState> {
-  private b = block('messenger');
-  private resizableContainer: HTMLDivElement | null = null;
-  private splitter: HTMLDivElement | null = null;
-  private parentContainer: HTMLDivElement | null = null;
+function mapDispatch(dispatch: Dispatch<IAppReduxState>): IActionProps {
+  return bindActionCreators({
+    logOutCommunications: authWrapperAction.logOut,
+  }, dispatch);
+}
 
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      width: props.startWidth !== undefined ? props.startWidth : '25%',
-      isPressed: false,
-    };
-  }
+type IProps = IActionProps;
 
+class MessengerLayout extends React.PureComponent<IProps> {
   public render() {
-    const b = this.b;
-    const { width } = this.state;
+    const b = block('messenger');
+    const props = this.props;
 
     return(
-      <div className={b()} ref={(parentContainer) => { this.parentContainer = parentContainer as HTMLDivElement; }}>
-        <div
-          className={b('users-list')()}
-          style={{width: `${width}`}}
-          ref={(resizableContainer) => { this.resizableContainer = resizableContainer as HTMLDivElement; }}
-        >
+      <div className={b()}>
+        <button onClick={this.logOut}>Log Out</button>
+        <div className={b('users-list')()}>
           users
         </div>
-        <div
-          onMouseDown={this.startDragging}
-          className={b('splitter')()}
-          ref={(splitter) => { this.splitter = splitter as HTMLDivElement; }}
-        />
+        <div className={b('splitter')()}/>
         <div className={b('messages')()}>
           messages
         </div>
@@ -53,31 +44,9 @@ class MessengerLayout extends React.PureComponent<IProps, IState> {
   }
 
   @bind
-  private startDragging() {
-    document.addEventListener('mouseup', this.stopDragging);
-    document.addEventListener('mousemove', this.handleDragging);
-    this.setState({isPressed: true});
-  }
-
-  @bind
-  private stopDragging(event: MouseEvent | TouchEvent) {
-    this.setState({isPressed: false});
-    document.removeEventListener('mouseup', this.stopDragging);
-    document.removeEventListener('mousemove', this.handleDragging);
-  }
-
-  @bind
-  private handleDragging(event: MouseEvent | TouchEvent) {
-    if (this.state.isPressed) {
-      const parentContainerWidth = (this.parentContainer as HTMLDivElement).clientWidth;
-      console.log(this.resizableContainer, this.splitter);
-
-      if (event instanceof MouseEvent) {
-        const offset = event.clientX * 100 / parentContainerWidth;
-        this.setState({width: `${offset}%`});
-      }
-    }
+  private logOut() {
+    this.props.logOutCommunications();
   }
 }
 
-export default MessengerLayout;
+export default connect(mapState, mapDispatch)(MessengerLayout);

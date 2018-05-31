@@ -9,9 +9,9 @@ class MessengerModule extends Module {
     return (
       <PrivateRoute
         exact
-        key="messenger"
-        path={`${ROUTES_PREFIX}/messenger`}
-        redirectPath={`${ROUTES_PREFIX}/authentication/:tab`}
+        key="im"
+        path={`${ROUTES_PREFIX}/im`}
+        redirectPath={`${ROUTES_PREFIX}/authentication`}
         component={Layout}
       />
     );

@@ -16,10 +16,11 @@ const chunkName = process.env.NODE_ENV === 'production' ? 'id' : 'name';
 const chunkHash = process.env.WATCH_MODE === 'true' ? 'hash' : 'chunkhash';
 const hot = process.env.WATCH_MODE === 'true';
 
+// http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
 const isNeed404Page: boolean = process.env.NODE_ENV_MODE === 'gh-pages' ? true : false;
 
 export const commonPlugins: webpack.Plugin[] = [
-  new CleanWebpackPlugin(['build'], { root: path.resolve(__dirname, '..') }),
+  new CleanWebpackPlugin(['build', 'static'], { root: path.resolve(__dirname, '..') }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
@@ -32,28 +33,31 @@ export const commonPlugins: webpack.Plugin[] = [
     minChunks: (module, count) => module.context && module.context.includes('src/shared'),
   }),
   new webpack.optimize.CommonsChunkPlugin({
-    name: 'meta',
+    name: 'manifest',
     minChunks: Infinity,
   }),
   new HtmlWebpackPlugin({
     filename: 'index.html',
     template: 'assets/index.html',
     chunksSortMode(a, b) {
-      const order = ['app', 'shared', 'vendor', 'meta'];
+      const order = ['app', 'shared', 'vendor', 'manifest'];
       return order.indexOf(b.names[0]) - order.indexOf(a.names[0]);
     },
   }),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     'process.env.NODE_ENV_MODE': JSON.stringify(process.env.NODE_ENV_MODE),
-    'process.env.__HOST__': JSON.stringify('http://localhost:3000'),
+    '__HOST__': JSON.stringify('http://localhost:3000'),
+    '__LANG__': JSON.stringify(process.env.LANG || 'en'),
+    '__CLIENT__': true,
+    '__SERVER__': false,
   }),
 ].concat(isNeed404Page ? (
   new HtmlWebpackPlugin({
     filename: '404.html',
     template: 'assets/index.html',
     chunksSortMode(a, b) {
-      const order = ['app', 'shared', 'vendor', 'meta'];
+      const order = ['app', 'shared', 'vendor', 'manifest'];
       return order.indexOf(b.names[0]) - order.indexOf(a.names[0]);
     },
   })
@@ -97,16 +101,17 @@ export const commonScssLoaders: webpack.Loader[] = [
         return [
           postcssEasyImport({
             extensions: '.scss',
+            path: path.resolve(__dirname, '..', 'src', 'shared', 'view', 'styles'),
           }),
           stylelint(),
           doiuse({
-            browsers: ['ie >= 11', 'last 2 versions'],
-            ignore: ['flexbox', 'rem'],
+            browsers: ['defaults', 'not op_mini all', 'not ie > 0', 'not ie_mob > 0'],
+            ignore: [],
             ignoreFiles: ['**/normalize.css'],
           }),
           postcssReporter({
             clearReportedMessages: true,
-            throwError: true,
+            // throwError: true,
           }),
         ];
       },
@@ -116,6 +121,7 @@ export const commonScssLoaders: webpack.Loader[] = [
 
 export const commonConfig: webpack.Configuration = {
   target: 'web',
+  devtool: 'source-map',
   context: path.resolve(__dirname, '..', 'src'),
   output: {
     publicPath: ROUTES_PREFIX + '/',

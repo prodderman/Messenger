@@ -1,5 +1,4 @@
 import * as NS from '../namespace';
-import { error } from 'util';
 
 const initialState: NS.IReduxState = {
   communications: {
@@ -19,7 +18,7 @@ const initialState: NS.IReduxState = {
     },
   },
   ui: {
-
+    activeFrom: 'login',
   },
 };
 

@@ -26,6 +26,12 @@ class Api {
   }
 
   @bind
+  public async logOut() {
+    await delay(500);
+    return false;
+  }
+
+  @bind
   private validateLoginData(users: IUser[], loginData: ILogin): boolean {
     return users.some((user) => {
       if (user.email === loginData.email &&

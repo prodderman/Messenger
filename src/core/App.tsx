@@ -1,19 +1,31 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { AuthWrapper } from 'services/AuthWrapper';
+import { BrowserRouter, StaticRouter } from 'react-router-dom';
+
 import { IAppData } from 'shared/types/app';
 
 import createRoutes from './routes';
 
-function App({ modules, store }: IAppData) {
+export function App({ modules, store }: IAppData) {
   return (
     <Provider store={store}>
-      <AuthWrapper>
-        <Router>{createRoutes(modules)}</Router>
-      </AuthWrapper>
+      <BrowserRouter>
+        <React.StrictMode>
+          {createRoutes(modules)}
+        </React.StrictMode>
+      </BrowserRouter>
     </Provider>
   );
 }
 
-export default App;
+export function ServerApp({ modules, store, ...routerProps }: IAppData & StaticRouter['props']) {
+  return (
+    <Provider store={store}>
+      <StaticRouter {...routerProps}>
+        <React.StrictMode>
+          {createRoutes(modules)}
+        </React.StrictMode>
+      </StaticRouter>
+    </Provider>
+  );
+}

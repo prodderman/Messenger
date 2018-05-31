@@ -8,7 +8,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { IAppReduxState } from 'shared/types/app';
 
 import * as signInUpForm from 'features/signInUpForm';
-import {actions as privateRouteActions} from 'services/AuthWrapper';
+import {actions as authWrapperAction} from 'services/AuthWrapper';
 
 import './Layout.scss';
 import { connect } from 'react-redux';
@@ -22,12 +22,12 @@ function mapState(state: IAppReduxState): {} {
 }
 
 interface IActionProps {
-  changeAccess: typeof privateRouteActions.changeAccess;
+  changeAccess: typeof authWrapperAction.changeAccess;
 }
 
 function mapDispatch(dispatch: Dispatch<IAppReduxState>): IActionProps {
   return bindActionCreators({
-    changeAccess: privateRouteActions.changeAccess,
+    changeAccess: authWrapperAction.changeAccess,
   }, dispatch);
 }
 
@@ -42,11 +42,7 @@ class AuthenticationLayout extends React.PureComponent<IProps, {}> {
 
   public render() {
     const { SignInUpForm } = this.props.signInUpFormEntry.containers;
-    const routeProps = {
-      history: this.props.history,
-      location: this.props.location,
-      match: this.props.match,
-    };
+    const routeProps = this.props as RouteComponentProps<signInUpForm.namespace.ITab>;
     return (
       <div className={b()}>
         <SignInUpForm onAccessChange={this.onAccessChange} routeProps={routeProps} />

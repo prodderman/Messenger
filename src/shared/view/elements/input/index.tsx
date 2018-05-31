@@ -4,21 +4,7 @@ import block from 'bem-cn';
 import './index.scss';
 import { bind } from 'decko';
 
-interface IProps {
-  type: string;
-  placeholder?: string;
-  name?: string;
-  minLength?: number;
-  maxLength?: number;
-  min?: number;
-  max?: number;
-  step?: number;
-  pattern?: string;
-  hidden?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+type IProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 interface IState {
   focused?: boolean;
@@ -30,7 +16,7 @@ class Input extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       focused: false,
-      filled: false,
+      filled: !!this.props.defaultValue,
     };
   }
   public render() {
@@ -42,17 +28,11 @@ class Input extends React.Component<IProps, IState> {
         <label className={b('label')()}>
           <input
             className={b('field')()}
-            type={props.type}
-            name={props.name}
-            minLength={props.minLength}
-            maxLength={props.maxLength}
-            step={props.step}
-            disabled={props.disabled}
-            pattern={props.pattern}
-            required={props.required}
-            onFocus={this.onFocus}
+            {...props}
             onBlur={this.onBlur}
+            onFocus={this.onFocus}
             onChange={this.isFilled}
+            placeholder=""
           />
           <span className={b('placeholder', {focus: state.focused || state.filled ? true : false})()}>
             {props.placeholder}
@@ -65,18 +45,22 @@ class Input extends React.Component<IProps, IState> {
   @bind
   private onFocus(event: React.FocusEvent<HTMLInputElement>) {
     this.setState({focused: true});
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
+    }
   }
 
   @bind
   private onBlur(event: React.FocusEvent<HTMLInputElement>) {
     this.setState({focused: false});
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
   }
 
   @bind
   private isFilled(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      filled: event.target.value ? true : false,
-    });
+    this.setState({filled: event.target.value ? true : false});
     if (this.props.onChange) {
       this.props.onChange(event);
     }
